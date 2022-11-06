@@ -1,4 +1,4 @@
-import './global.css';
+import './index.css';
 import copy from 'copy-to-clipboard';
 
 const messageForm = document.querySelector('#messageForm');

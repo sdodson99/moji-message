@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+  @apply border border-gray-300 rounded p-1 block;
+}
+
+.container {
+  @apply mx-auto max-w-5xl px-8;
+}
+
+.btn {
+  @apply px-4 py-2 bg-gray-50 hover:bg-gray-400 rounded transition;
+}
+
+.btn-primary {
+  @apply bg-green-600 hover:bg-green-800 text-white;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-300;
+}
+
+.moji-output {
+  @apply p-8 whitespace-pre rounded bg-gray-50 border-gray-300 border;
+}
+
+.form-group {
+  @apply flex flex-col;
+}

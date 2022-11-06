@@ -12,29 +12,54 @@
 </head>
 
 <body>
-    <main>
-        <form id="messageForm">
-            <div>
-                <label for="message">Message</label>
-                <input id="message" type="text" value="" />
+    <div class="min-h-screen">
+        <header class="py-8 bg-gray-50">
+            <div class="container">
+                <div class="font-bold text-green-600 text-lg">
+                    Moji Message
+                </div>
+                <div class="text-gray-700 text-sm italic">
+                    Encode a message with emojis!
+                </div>
             </div>
+        </header>
+        <main class="container my-8">
+            <section>
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <input id="message" type="text" class="mt-1" value="" />
+                    </div>
 
-            <div>
-                <label for="emoji">Emoji</label>
-                <input id="emoji" type="text" value="❤️" />
-            </div>
+                    <div class="mt-4 form-group">
+                        <label for="emoji">Emoji</label>
+                        <input id="emoji" type="text" class="mt-1" value="❤️" />
+                    </div>
 
-            <div>
-                <button>Convert</button>
-            </div>
-        </form>
+                    <div class="mt-8">
+                        <button class="btn btn-primary">Convert</button>
+                    </div>
+                </form>
+            </section>
 
-        <div>
-            <button id="copyMojiMessage" type="button">Copy Moji Message</button>
+            <hr class="my-12" />
+
+            <section>
+                <div>
+                    <div>
+                        <button id="copyMojiMessage" type="button" class="btn btn-secondary">Copy Output</button>
+                    </div>
+
+                    <div id="mojiOutput" class="mt-4 moji-output"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="py-4 text-sm bg-green-600 text-white text-center">
+        <div class="container">
+            Copyright © 2022 Sean Dodson. All rights reserved.
         </div>
-
-        <div id="mojiOutput" style="white-space: pre;"></div>
-    </main>
+    </footer>
 </body>
 
 </html>
