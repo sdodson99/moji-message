@@ -8,12 +8,16 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "clean": "rm -rf dist"
   },
   "author": "Sean Dodson",
   "license": "ISC",
   "devDependencies": {
     "gh-pages": "^4.0.0",
     "vite": "^3.2.2"
+  },
+  "dependencies": {
+    "copy-to-clipboard": "^3.3.2"
   }
 }

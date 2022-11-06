@@ -1,7 +1,11 @@
+import './global.css';
+import copy from 'copy-to-clipboard';
+
 const messageForm = document.querySelector('#messageForm');
 const messageInput = document.querySelector('#message');
 const emojiInput = document.querySelector('#emoji');
 const mojiOutput = document.querySelector('#mojiOutput');
+const copyMojiMessage = document.querySelector('#copyMojiMessage');
 
 messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -11,7 +15,11 @@ messageForm.addEventListener('submit', (e) => {
 
   const mojiMessage = toMojiMessage(message, emoji);
 
-  mojiOutput.innerHTML = mojiMessage;
+  mojiOutput.innerText = mojiMessage;
+});
+
+copyMojiMessage.addEventListener('click', () => {
+  copy(mojiOutput.innerText);
 });
 
 /**
@@ -45,7 +53,7 @@ function toMojiMessageCharacter(character, emoji) {
 
   return characterMatrix
     .map((row) => {
-      return row.map((b) => `<span ${b ? '' : 'style="visibility: hidden;"'}>${emoji}</span>`).join('');
+      return row.map((b) => (b ? emoji : '     ')).join('');
     })
     .join('\n');
 }
