@@ -22,6 +22,8 @@
     "vite": "^3.2.2"
   },
   "dependencies": {
-    "copy-to-clipboard": "^3.3.2"
+    "@picmo/popup-picker": "^5.7.2",
+    "copy-to-clipboard": "^3.3.2",
+    "picmo": "^5.7.2"
   }
 }

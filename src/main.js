@@ -1,17 +1,35 @@
 import './index.css';
 import copy from 'copy-to-clipboard';
+import { createPopup } from '@picmo/popup-picker';
 
 const messageForm = document.querySelector('#messageForm');
 const messageInput = document.querySelector('#message');
-const emojiInput = document.querySelector('#emoji');
 const mojiOutput = document.querySelector('#mojiOutput');
 const copyMojiMessage = document.querySelector('#copyMojiMessage');
+
+const emojiPicker = document.querySelector('#emojiPicker');
+
+const emojiPickerPopup = createPopup(
+  {},
+  {
+    triggerElement: emojiPicker,
+    referenceElement: emojiPicker,
+  }
+);
+
+emojiPicker.addEventListener('click', () => {
+  emojiPickerPopup.toggle();
+});
+
+emojiPickerPopup.addEventListener('emoji:select', (e) => {
+  emojiPicker.replaceChildren(e.emoji);
+});
 
 messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const message = messageInput.value;
-  const emoji = emojiInput.value;
+  const emoji = emojiPicker.textContent;
 
   const mojiMessage = toMojiMessage(message, emoji);
 
