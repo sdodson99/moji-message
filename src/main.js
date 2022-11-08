@@ -14,6 +14,8 @@ const emojiPickerPopup = createPopup(
   {
     triggerElement: emojiPicker,
     referenceElement: emojiPicker,
+    position: 'bottom-start',
+    className: 'emoji-picker',
   }
 );
 

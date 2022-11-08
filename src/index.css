@@ -30,3 +30,7 @@ textarea {
 .form-group {
   @apply flex flex-col;
 }
+
+.emoji-picker {
+  max-width: 80vw;
+}
