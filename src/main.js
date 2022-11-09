@@ -33,13 +33,24 @@ messageForm.addEventListener('submit', (e) => {
   const message = messageInput.value;
   const emoji = emojiPicker.textContent;
 
+  if (!message || !emoji) {
+    return;
+  }
+
   const mojiMessage = toMojiMessage(message, emoji);
 
   mojiOutput.innerText = mojiMessage;
+
+  window.dataLayer?.push({ event: 'convert_message', message_length: message.length, emoji });
 });
 
 copyMojiMessage.addEventListener('click', () => {
   copy(mojiOutput.innerText);
+
+  const message = messageInput.value;
+  const emoji = emojiPicker.textContent;
+
+  window.dataLayer?.push({ event: 'copy_message', message_length: message.length, emoji });
 });
 
 /**
