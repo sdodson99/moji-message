@@ -4,6 +4,7 @@ import { createPopup } from '@picmo/popup-picker';
 
 const messageForm = document.querySelector('#messageForm');
 const messageInput = document.querySelector('#message');
+const mojiOutputSection = document.querySelector('#mojiOutputSection');
 const mojiOutput = document.querySelector('#mojiOutput');
 
 const copyMojiMessage = document.querySelector('#copyMojiMessage');
@@ -43,6 +44,8 @@ messageForm.addEventListener('submit', (e) => {
   const mojiMessage = toMojiMessage(message, emoji);
 
   mojiOutput.innerText = mojiMessage;
+
+  mojiOutputSection.classList.remove('hidden');
 
   window.dataLayer?.push({ event: 'convert_message', message_length: message.length, emoji });
 });
