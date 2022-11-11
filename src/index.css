@@ -24,7 +24,7 @@ header {
 }
 
 .btn-primary {
-  @apply bg-green-600 hover:bg-green-800 text-white;
+  @apply bg-green-700 hover:bg-green-900 text-white;
 }
 
 .btn-secondary {
