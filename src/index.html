@@ -21,6 +21,10 @@
     <meta name="description" content="Encode a message with emojis!">
     <link rel="icon" href="/favicon.ico">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Mitr:wght@300;500&display=swap" rel="stylesheet">
+
     <script src="./main.js" type="module"></script>
 
     <title>Moji Message</title>
@@ -33,13 +37,18 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="min-h-screen">
-        <header class="py-8 bg-gray-50">
-            <div class="container">
-                <h1 class="font-bold text-green-600 text-lg">
-                    Moji Message
-                </h1>
-                <div class="text-gray-700 text-sm italic">
-                    Encode a message with emojis!
+        <header class="py-8 shadow-md">
+            <div class="container flex items-center">
+                <div>
+                    <img src="/logo.png" class="h-10 w-10" alt="" />
+                </div>
+                <div class="ml-5">
+                    <h1 class="font-medium text-green-600 text-lg">
+                        Moji Message
+                    </h1>
+                    <div class="font-light text-gray-700 text-sm italic">
+                        Encode a message with emojis!
+                    </div>
                 </div>
             </div>
         </header>
@@ -84,7 +93,7 @@
             </section>
         </main>
     </div>
-    <footer class="py-4 text-sm bg-green-600 text-white text-center">
+    <footer class="py-4 text-xs bg-gray-50  text-center">
         <div class="container">
             Copyright © 2022 Sean Dodson. All rights reserved.
         </div>
