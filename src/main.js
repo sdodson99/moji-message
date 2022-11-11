@@ -4,6 +4,7 @@ import { createPopup } from '@picmo/popup-picker';
 
 const messageForm = document.querySelector('#messageForm');
 const messageInput = document.querySelector('#message');
+const messageInputError = document.querySelector('#messageError');
 const mojiOutputSection = document.querySelector('#mojiOutputSection');
 const mojiOutput = document.querySelector('#mojiOutput');
 
@@ -12,6 +13,7 @@ const copyPending = document.querySelector('#copyPending');
 const copySuccess = document.querySelector('#copySuccess');
 
 const emojiPicker = document.querySelector('#emojiPicker');
+const emojiError = document.querySelector('#emojiError');
 
 const emojiPickerPopup = createPopup(
   {},
@@ -19,7 +21,7 @@ const emojiPickerPopup = createPopup(
     triggerElement: emojiPicker,
     referenceElement: emojiPicker,
     position: 'bottom-start',
-    className: 'emoji-picker',
+    className: 'emoji-picker-popup',
   }
 );
 
@@ -27,36 +29,91 @@ emojiPicker.addEventListener('click', () => {
   emojiPickerPopup.toggle();
 });
 
+let selectedEmoji;
+
 emojiPickerPopup.addEventListener('emoji:select', (e) => {
   emojiPicker.replaceChildren(e.emoji);
+
+  selectedEmoji = e.emoji;
+
+  validateEmoji();
 });
 
 messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const message = messageInput.value;
-  const emoji = emojiPicker.textContent;
+  messageForm.classList.add('form-submitted');
 
-  if (!message || !emoji) {
+  if (!validateMessageForm()) {
+    const firstInvalidInput = document.querySelectorAll('#messageForm .invalid')[0];
+
+    firstInvalidInput?.focus();
+
     return;
   }
 
+  const message = messageInput.value;
+  const emoji = selectedEmoji;
+
   const mojiMessage = toMojiMessage(message, emoji);
 
-  mojiOutput.innerText = mojiMessage;
+  mojiOutput.textContent = mojiMessage;
 
   mojiOutputSection.classList.remove('hidden');
 
   window.dataLayer?.push({ event: 'convert_message', message_length: message.length, emoji });
 });
 
+function validateMessageForm() {
+  const messageValid = validateMessage();
+  const emojiValid = validateEmoji();
+
+  return messageValid && emojiValid;
+}
+
+messageInput.addEventListener('input', () => {
+  validateMessage();
+});
+
+function validateMessage() {
+  if (messageInput.validity.valueMissing) {
+    messageInput.classList.add('invalid');
+    messageInputError.textContent = 'Please enter a message.';
+    return false;
+  }
+
+  if (!messageInput.validity.valid) {
+    messageInput.classList.add('invalid');
+    messageInputError.textContent = 'Invalid message.';
+    return false;
+  }
+
+  messageInput.classList.remove('invalid');
+  messageInputError.textContent = '';
+
+  return true;
+}
+
+function validateEmoji() {
+  if (!selectedEmoji) {
+    emojiPicker.classList.add('invalid');
+    emojiError.textContent = 'Please select an emoji.';
+    return false;
+  }
+
+  emojiPicker.classList.remove('invalid');
+  emojiError.textContent = '';
+
+  return true;
+}
+
 let copySuccessTimeout;
 
 copyMojiMessage.addEventListener('click', () => {
-  copy(mojiOutput.innerText);
+  copy(mojiOutput.textContent);
 
   const message = messageInput.value;
-  const emoji = emojiPicker.textContent;
+  const emoji = selectedEmoji;
 
   window.dataLayer?.push({ event: 'copy_message', message_length: message.length, emoji });
 
@@ -73,7 +130,7 @@ copyMojiMessage.addEventListener('click', () => {
 
     copyPending.classList.add('flex');
     copyPending.classList.remove('hidden');
-  }, 5000);
+  }, 2000);
 });
 
 /**

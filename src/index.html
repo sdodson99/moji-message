@@ -55,17 +55,17 @@
         </header>
         <main class="container my-8">
             <section>
-                <form id="messageForm">
+                <form id="messageForm" novalidate>
                     <div class="form-group">
                         <label for="message">Enter a <strong>Message</strong></label>
-                        <input id="message" type="text" class="mt-1" />
+                        <input id="message" type="text" class="mt-1" required />
+                        <div id="messageError" class="form-error mt-1" aria-live="polite"></div>
                     </div>
-
                     <div class="mt-4 form-group">
                         <div>Choose an <strong>Emoji</strong></div>
                         <div>
-                            <button id="emojiPicker" aria-label="Open emoji selector"
-                                class="mt-1 border rounded w-10 h-10 flex items-center justify-center" type="button">
+                            <button id="emojiPicker" aria-label="Open emoji selector" class="emoji-picker"
+                                type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     version="1.1" width="24" height="24" viewBox="0 0 24 24">
                                     <path
@@ -73,14 +73,13 @@
                                 </svg>
                             </button>
                         </div>
+                        <div id="emojiError" class="form-error mt-1" aria-live="polite"></div>
                     </div>
-
                     <div class="mt-8">
                         <button class="btn btn-primary">Convert Message</button>
                     </div>
                 </form>
             </section>
-
             <section id="mojiOutputSection" class="hidden mt-12 relative moji-output-container">
                 <div class="absolute top-2 right-2">
                     <button id="copyMojiMessage" type="button" class="btn btn-secondary">

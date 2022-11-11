@@ -42,9 +42,31 @@ header {
 }
 
 .emoji-picker {
+  @apply mt-1 border rounded w-10 h-10 flex items-center justify-center;
+}
+
+.emoji-picker-popup {
   max-width: 80vw;
 }
 
 .font-system {
   font-family: system-ui, sans-serif;
+}
+
+.form-error {
+  @apply hidden text-red-700 text-sm;
+}
+
+.form-submitted {
+  input.invalid {
+    @apply border-red-700 outline-red-700;
+  }
+
+  .emoji-picker.invalid {
+    @apply border-red-700;
+  }
+
+  .form-error {
+    @apply block;
+  }
 }
