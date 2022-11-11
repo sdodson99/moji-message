@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:cname": "echo 'moji.seandodson.com' > ./dist/CNAME",
     "preview": "vite preview",
-    "predeploy": "npm run build && npm run build:cname",
-    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy --only hosting",
+    "deploy:stage": "firebase hosting:channel:deploy --expires 7d",
     "clean": "rm -rf dist"
   },
   "author": "Sean Dodson",
