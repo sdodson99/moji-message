@@ -44,3 +44,7 @@ header {
 .emoji-picker {
   max-width: 80vw;
 }
+
+.font-system {
+  font-family: system-ui, sans-serif;
+}
