@@ -2,6 +2,8 @@
 
 An epic web app for encoding a message with emojis.
 
+Website: https://moji.seandodson.com/
+
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
@@ -10,8 +12,11 @@ An epic web app for encoding a message with emojis.
 
 ## Tech Stack
 
-- Vanilla JavaScript
+- JavaScript
+- Tailwind
 - Vite
+- Google Analytics
+- Firebase Hosting
 
 ## How to Run Locally
 
