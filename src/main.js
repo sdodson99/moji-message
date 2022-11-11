@@ -5,7 +5,10 @@ import { createPopup } from '@picmo/popup-picker';
 const messageForm = document.querySelector('#messageForm');
 const messageInput = document.querySelector('#message');
 const mojiOutput = document.querySelector('#mojiOutput');
+
 const copyMojiMessage = document.querySelector('#copyMojiMessage');
+const copyPending = document.querySelector('#copyPending');
+const copySuccess = document.querySelector('#copySuccess');
 
 const emojiPicker = document.querySelector('#emojiPicker');
 
@@ -44,6 +47,8 @@ messageForm.addEventListener('submit', (e) => {
   window.dataLayer?.push({ event: 'convert_message', message_length: message.length, emoji });
 });
 
+let copySuccessTimeout;
+
 copyMojiMessage.addEventListener('click', () => {
   copy(mojiOutput.innerText);
 
@@ -51,6 +56,21 @@ copyMojiMessage.addEventListener('click', () => {
   const emoji = emojiPicker.textContent;
 
   window.dataLayer?.push({ event: 'copy_message', message_length: message.length, emoji });
+
+  copyPending.classList.add('hidden');
+  copyPending.classList.remove('flex');
+
+  copySuccess.classList.add('flex');
+  copySuccess.classList.remove('hidden');
+
+  clearTimeout(copySuccessTimeout);
+  copySuccessTimeout = setTimeout(() => {
+    copySuccess.classList.add('hidden');
+    copySuccess.classList.remove('flex');
+
+    copyPending.classList.add('flex');
+    copyPending.classList.remove('hidden');
+  }, 5000);
 });
 
 /**

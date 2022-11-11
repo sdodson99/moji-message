@@ -28,11 +28,13 @@ header {
 }
 
 .btn-secondary {
-  @apply bg-gray-100 hover:bg-gray-300;
+  @apply bg-gray-100 hover:bg-gray-200;
 }
 
-.moji-output {
-  @apply p-8 whitespace-pre rounded bg-gray-50 border;
+.moji-output-container {
+  min-height: 200px;
+
+  @apply rounded bg-gray-50 border;
 }
 
 .form-group {
