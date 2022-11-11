@@ -33,8 +33,9 @@ header {
 
 .moji-output-container {
   min-height: 200px;
+  max-height: 600px;
 
-  @apply rounded bg-gray-50 border;
+  @apply rounded bg-gray-50 border overflow-scroll;
 }
 
 .form-group {
