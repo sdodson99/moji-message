@@ -17,6 +17,8 @@
     "test:coverage": "jest --coverage",
     "test:ci": "jest --coverage --ci",
     "test:update": "jest --updateSnapshot",
+    "e2e": "playwright test",
+    "e2e:update": "npm run e2e -- --update-snapshots",
     "predeploy": "npm run build",
     "deploy": "firebase deploy --only hosting",
     "deploy:stage": "firebase hosting:channel:deploy --expires 7d",
@@ -25,6 +27,7 @@
   "author": "Sean Dodson",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.27.1",
     "@types/jest": "^29.2.2",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
