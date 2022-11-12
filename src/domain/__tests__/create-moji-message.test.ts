@@ -30,7 +30,7 @@ describe('createMojiMessage', () => {
   });
 
   it('should return empty message for unknown characters', () => {
-    const mojiMessage = createMojiMessage('!@#$', emoji, backgroundEmoji);
+    const mojiMessage = createMojiMessage('%@#$', emoji, backgroundEmoji);
 
     expect(mojiMessage).not.toContain(emoji);
   });
