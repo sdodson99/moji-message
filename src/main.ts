@@ -140,8 +140,8 @@ copyMojiMessage.addEventListener('click', () => {
   copySuccess.classList.add('flex');
   copySuccess.classList.remove('hidden');
 
-  clearTimeout(copySuccessTimeout);
-  copySuccessTimeout = setTimeout(() => {
+  window.clearTimeout(copySuccessTimeout);
+  copySuccessTimeout = window.setTimeout(() => {
     copySuccess.classList.add('hidden');
     copySuccess.classList.remove('flex');
 
