@@ -49,7 +49,9 @@ const emojiPickerPopup = createPopup(
 );
 
 messageEmojiPicker.addEventListener('click', () => {
-  messageEmojiPicker.scrollIntoView();
+  messageEmojiPicker.scrollIntoView({
+    behavior: 'smooth',
+  });
 
   emojiPickerPopup.toggle({
     triggerElement: messageEmojiPicker,
@@ -76,7 +78,9 @@ const backgroundEmojiPicker = document.querySelector<HTMLButtonElement>(
 )!;
 
 backgroundEmojiPicker.addEventListener('click', () => {
-  backgroundEmojiPicker.scrollIntoView();
+  backgroundEmojiPicker.scrollIntoView({
+    behavior: 'smooth',
+  });
 
   emojiPickerPopup.toggle({
     triggerElement: backgroundEmojiPicker,
