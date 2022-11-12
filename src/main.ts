@@ -1,19 +1,38 @@
 import './index.css';
-import copy from 'copy-to-clipboard';
 import { createPopup } from '@picmo/popup-picker';
 import { createMojiMessage, CreateMojiMessageForm } from './domain';
+import {
+  CopyMojiMessageController,
+  CopyMojiMessageModel,
+  CopyMojiMessageView,
+} from './features/copy-moji-message';
 
 const messageForm = document.querySelector<HTMLFormElement>('#messageForm')!;
 const messageInput = document.querySelector<HTMLInputElement>('#message')!;
 const messageInputError = document.querySelector<HTMLElement>('#messageError')!;
 const mojiOutputSection =
   document.querySelector<HTMLElement>('#mojiOutputSection')!;
-const mojiOutput = document.querySelector<HTMLElement>('#mojiOutput')!;
+const mojiMessageOutput = document.querySelector<HTMLElement>('#mojiOutput')!;
 
-const copyMojiMessage =
+const copyMojiMessageButton =
   document.querySelector<HTMLButtonElement>('#copyMojiMessage')!;
-const copyPending = document.querySelector<HTMLElement>('#copyPending')!;
-const copySuccess = document.querySelector<HTMLElement>('#copySuccess')!;
+const copyReadyDisplay = document.querySelector<HTMLElement>('#copyPending')!;
+const copySuccessDisplay = document.querySelector<HTMLElement>('#copySuccess')!;
+
+const createMessageForm: CreateMojiMessageForm = {
+  backgroundEmoji: '◻️',
+};
+
+const copyMojiMessageView = new CopyMojiMessageView({
+  copyMojiMessageButton,
+  mojiMessageOutput,
+  copyReadyDisplay,
+  copySuccessDisplay,
+});
+
+const copyMojiMessageModel = new CopyMojiMessageModel();
+
+new CopyMojiMessageController(copyMojiMessageView, copyMojiMessageModel);
 
 const messageEmojiPicker = document.querySelector<HTMLButtonElement>(
   '#messageEmojiPicker'
@@ -37,8 +56,6 @@ messageEmojiPicker.addEventListener('click', () => {
     referenceElement: messageEmojiPicker,
   });
 });
-
-const createMessageForm: CreateMojiMessageForm = {};
 
 emojiPickerPopup.addEventListener('emoji:select', ({ emoji }) => {
   emojiPickerPopup.referenceElement?.replaceChildren(emoji);
@@ -82,13 +99,15 @@ messageForm.addEventListener('submit', (e) => {
     return;
   }
 
-  const mojiMessage = createMojiMessage({
+  const createMojiMessageRequest = {
     message: createMessageForm.message ?? '',
     messageEmoji: createMessageForm.messageEmoji ?? '',
     backgroundEmoji: createMessageForm.backgroundEmoji ?? '',
-  });
+  };
 
-  mojiOutput.textContent = mojiMessage;
+  const mojiMessage = createMojiMessage(createMojiMessageRequest);
+
+  mojiMessageOutput.textContent = mojiMessage;
 
   mojiOutputSection.classList.remove('hidden');
 
@@ -98,6 +117,8 @@ messageForm.addEventListener('submit', (e) => {
     emoji: createMessageForm.messageEmoji,
     background_emoji: createMessageForm.backgroundEmoji,
   });
+
+  copyMojiMessageModel.currentMojiMessageRequest = createMojiMessageRequest;
 });
 
 function validateMessageForm() {
@@ -144,35 +165,3 @@ function validateEmoji() {
 
   return true;
 }
-
-let copySuccessTimeout: number;
-
-copyMojiMessage.addEventListener('click', () => {
-  if (!mojiOutput.textContent) {
-    return;
-  }
-
-  copy(mojiOutput.textContent);
-
-  window.dataLayer?.push({
-    event: 'copy_message',
-    message_length: createMessageForm.message?.length,
-    emoji: createMessageForm.messageEmoji,
-    background_emoji: createMessageForm.backgroundEmoji,
-  });
-
-  copyPending.classList.add('hidden');
-  copyPending.classList.remove('flex');
-
-  copySuccess.classList.add('flex');
-  copySuccess.classList.remove('hidden');
-
-  window.clearTimeout(copySuccessTimeout);
-  copySuccessTimeout = window.setTimeout(() => {
-    copySuccess.classList.add('hidden');
-    copySuccess.classList.remove('flex');
-
-    copyPending.classList.add('flex');
-    copyPending.classList.remove('hidden');
-  }, 2000);
-});
