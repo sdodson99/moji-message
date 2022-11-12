@@ -30,6 +30,8 @@ const emojiPickerPopup = createPopup(
 );
 
 messageEmojiPicker.addEventListener('click', () => {
+  messageEmojiPicker.scrollIntoView();
+
   emojiPickerPopup.toggle({
     triggerElement: messageEmojiPicker,
     referenceElement: messageEmojiPicker,
@@ -58,6 +60,8 @@ const backgroundEmojiPicker = document.querySelector<HTMLButtonElement>(
 )!;
 
 backgroundEmojiPicker.addEventListener('click', () => {
+  backgroundEmojiPicker.scrollIntoView();
+
   emojiPickerPopup.toggle({
     triggerElement: backgroundEmojiPicker,
     referenceElement: backgroundEmojiPicker,
