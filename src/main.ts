@@ -3,18 +3,18 @@ import copy from 'copy-to-clipboard';
 import { createPopup } from '@picmo/popup-picker';
 import { createMojiMessage } from './domain';
 
-const messageForm = document.querySelector('#messageForm');
-const messageInput = document.querySelector('#message');
-const messageInputError = document.querySelector('#messageError');
-const mojiOutputSection = document.querySelector('#mojiOutputSection');
-const mojiOutput = document.querySelector('#mojiOutput');
+const messageForm = document.querySelector<HTMLFormElement>('#messageForm')!;
+const messageInput = document.querySelector<HTMLInputElement>('#message')!;
+const messageInputError = document.querySelector<HTMLElement>('#messageError')!;
+const mojiOutputSection = document.querySelector<HTMLElement>('#mojiOutputSection')!;
+const mojiOutput = document.querySelector<HTMLElement>('#mojiOutput')!;
 
-const copyMojiMessage = document.querySelector('#copyMojiMessage');
-const copyPending = document.querySelector('#copyPending');
-const copySuccess = document.querySelector('#copySuccess');
+const copyMojiMessage = document.querySelector<HTMLButtonElement>('#copyMojiMessage')!;
+const copyPending = document.querySelector<HTMLElement>('#copyPending')!;
+const copySuccess = document.querySelector<HTMLElement>('#copySuccess')!;
 
-const emojiPicker = document.querySelector('#emojiPicker');
-const emojiError = document.querySelector('#emojiError');
+const emojiPicker = document.querySelector<HTMLButtonElement>('#emojiPicker')!;
+const emojiError = document.querySelector<HTMLElement>('#emojiError')!;
 
 const emojiPickerPopup = createPopup(
   {},
@@ -30,7 +30,7 @@ emojiPicker.addEventListener('click', () => {
   emojiPickerPopup.toggle();
 });
 
-let selectedEmoji;
+let selectedEmoji: string;
 
 emojiPickerPopup.addEventListener('emoji:select', (e) => {
   emojiPicker.replaceChildren(e.emoji);
@@ -46,7 +46,7 @@ messageForm.addEventListener('submit', (e) => {
   messageForm.classList.add('form-submitted');
 
   if (!validateMessageForm()) {
-    const firstInvalidInput = document.querySelectorAll('#messageForm .invalid')[0];
+    const firstInvalidInput = document.querySelectorAll<HTMLElement>('#messageForm .invalid')[0];
 
     firstInvalidInput?.focus();
 
@@ -108,9 +108,13 @@ function validateEmoji() {
   return true;
 }
 
-let copySuccessTimeout;
+let copySuccessTimeout: number;
 
 copyMojiMessage.addEventListener('click', () => {
+  if (!mojiOutput.textContent) {
+    return;
+  }
+
   copy(mojiOutput.textContent);
 
   const message = messageInput.value;
