@@ -50,10 +50,6 @@ header {
   max-width: 80vw;
 }
 
-.font-system {
-  font-family: system-ui, sans-serif;
-}
-
 .form-error {
   @apply hidden text-red-700 text-sm;
 }

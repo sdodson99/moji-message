@@ -236,5 +236,9 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [X, _, _, _, _],
     [X, X, X, X, X],
   ],
-  ' ': [[_], [_]],
+  ' ': [
+    [_, _, _, _, _],
+    [_, _, _, _, _],
+    [_, _, _, _, _],
+  ],
 };

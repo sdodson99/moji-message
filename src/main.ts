@@ -15,31 +15,48 @@ const copyMojiMessage =
 const copyPending = document.querySelector<HTMLElement>('#copyPending')!;
 const copySuccess = document.querySelector<HTMLElement>('#copySuccess')!;
 
-const emojiPicker = document.querySelector<HTMLButtonElement>('#emojiPicker')!;
-const emojiError = document.querySelector<HTMLElement>('#emojiError')!;
+const messageEmojiPicker = document.querySelector<HTMLButtonElement>(
+  '#messageEmojiPicker'
+)!;
+const messageEmojiError =
+  document.querySelector<HTMLElement>('#messageEmojiError')!;
 
 const emojiPickerPopup = createPopup(
   {},
   {
-    triggerElement: emojiPicker,
-    referenceElement: emojiPicker,
     position: 'bottom-start',
     className: 'emoji-picker-popup',
   }
 );
 
-emojiPicker.addEventListener('click', () => {
-  emojiPickerPopup.toggle();
+messageEmojiPicker.addEventListener('click', () => {
+  emojiPickerPopup.toggle({
+    triggerElement: messageEmojiPicker,
+    referenceElement: messageEmojiPicker,
+  });
 });
 
 let selectedEmoji: string;
 
 emojiPickerPopup.addEventListener('emoji:select', (e) => {
-  emojiPicker.replaceChildren(e.emoji);
+  emojiPickerPopup.referenceElement?.replaceChildren(e.emoji);
 
-  selectedEmoji = e.emoji;
+  if (emojiPickerPopup.referenceElement === messageEmojiPicker) {
+    selectedEmoji = e.emoji;
 
-  validateEmoji();
+    validateEmoji();
+  }
+});
+
+const backgroundEmojiPicker = document.querySelector<HTMLButtonElement>(
+  '#backgroundEmojiPicker'
+)!;
+
+backgroundEmojiPicker.addEventListener('click', () => {
+  emojiPickerPopup.toggle({
+    triggerElement: backgroundEmojiPicker,
+    referenceElement: backgroundEmojiPicker,
+  });
 });
 
 messageForm.addEventListener('submit', (e) => {
@@ -59,8 +76,9 @@ messageForm.addEventListener('submit', (e) => {
 
   const message = messageInput.value;
   const emoji = selectedEmoji;
+  const backgroundEmoji = backgroundEmojiPicker.innerText!;
 
-  const mojiMessage = createMojiMessage(message, emoji);
+  const mojiMessage = createMojiMessage(message, emoji, backgroundEmoji);
 
   mojiOutput.textContent = mojiMessage;
 
@@ -105,13 +123,13 @@ function validateMessage() {
 
 function validateEmoji() {
   if (!selectedEmoji) {
-    emojiPicker.classList.add('invalid');
-    emojiError.textContent = 'Please select an emoji.';
+    messageEmojiPicker.classList.add('invalid');
+    messageEmojiError.textContent = 'Please select an emoji.';
     return false;
   }
 
-  emojiPicker.classList.remove('invalid');
-  emojiError.textContent = '';
+  messageEmojiPicker.classList.remove('invalid');
+  messageEmojiError.textContent = '';
 
   return true;
 }

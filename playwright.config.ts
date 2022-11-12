@@ -4,8 +4,8 @@ const config: PlaywrightTestConfig = {
   testDir: './test/e2e',
   retries: 1,
   use: {
-    baseURL: process.env.BASE_URL || 'http://localhost:5173',
-    headless: true,
+    baseURL: process.env.BASE_URL || 'http://127.0.0.1:5173',
+    headless: false,
     permissions: ['clipboard-read'],
   },
 };

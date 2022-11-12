@@ -5,8 +5,11 @@ test('get a moji message', async ({ page, baseURL }) => {
 
   await page.getByLabel('Enter a Message').fill('Hello World');
 
-  await page.click('#emojiPicker');
-  await page.getByTitle('face with tears of joy').click();
+  await page.click('#messageEmojiPicker');
+  await page.getByTitle('purple heart').click();
+
+  await page.click('#backgroundEmojiPicker');
+  await page.getByTitle('white heart').click();
 
   await page.getByText('Convert Message').click();
 

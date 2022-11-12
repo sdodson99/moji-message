@@ -9,9 +9,9 @@
           'gtm.start': new Date().getTime(),
           event: 'gtm.js',
         });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
+        const f = d.getElementsByTagName(s)[0];
+        const j = d.createElement(s);
+        const dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
@@ -69,17 +69,19 @@
             <div class="form-group">
               <label for="message">Enter a <strong>Message</strong></label>
               <input id="message" type="text" class="mt-1" required />
-              <div
-                id="messageError"
-                class="form-error mt-1"
-                aria-live="polite"
-              ></div>
+              <div class="mt-1">
+                <div
+                  id="messageError"
+                  class="form-error"
+                  aria-live="polite"
+                ></div>
+              </div>
             </div>
             <div class="mt-4 form-group">
               <div>Choose an <strong>Emoji</strong></div>
               <div>
                 <button
-                  id="emojiPicker"
+                  id="messageEmojiPicker"
                   aria-label="Open emoji selector"
                   class="emoji-picker"
                   type="button"
@@ -98,11 +100,26 @@
                   </svg>
                 </button>
               </div>
-              <div
-                id="emojiError"
-                class="form-error mt-1"
-                aria-live="polite"
-              ></div>
+              <div class="mt-1">
+                <div
+                  id="messageEmojiError"
+                  class="form-error"
+                  aria-live="polite"
+                ></div>
+              </div>
+            </div>
+            <div class="mt-4 form-group">
+              <div>Choose a <strong>Background Emoji</strong></div>
+              <div>
+                <button
+                  id="backgroundEmojiPicker"
+                  aria-label="Open emoji selector"
+                  class="emoji-picker"
+                  type="button"
+                >
+                  ◻️
+                </button>
+              </div>
             </div>
             <div class="mt-8">
               <button class="btn btn-primary">Convert Message</button>
@@ -154,7 +171,7 @@
             </button>
           </div>
           <div class="moji-output-container">
-            <div id="mojiOutput" class="whitespace-pre p-8 font-system"></div>
+            <div id="mojiOutput" class="whitespace-pre p-8"></div>
           </div>
         </section>
       </main>
