@@ -1,7 +1,7 @@
 import './index.css';
 import copy from 'copy-to-clipboard';
 import { createPopup } from '@picmo/popup-picker';
-import { createMojiMessage } from './domain';
+import { createMojiMessage, CreateMojiMessageForm } from './domain';
 
 const messageForm = document.querySelector<HTMLFormElement>('#messageForm')!;
 const messageInput = document.querySelector<HTMLInputElement>('#message')!;
@@ -38,21 +38,20 @@ messageEmojiPicker.addEventListener('click', () => {
   });
 });
 
-let selectedEmoji: string;
-let selectedBackgroundEmoji: string = '◻️';
+const createMessageForm: CreateMojiMessageForm = {};
 
 emojiPickerPopup.addEventListener('emoji:select', ({ emoji }) => {
   emojiPickerPopup.referenceElement?.replaceChildren(emoji);
 
   if (emojiPickerPopup.referenceElement === messageEmojiPicker) {
-    selectedEmoji = emoji;
+    createMessageForm.messageEmoji = emoji;
 
     validateEmoji();
 
     return;
   }
 
-  selectedBackgroundEmoji = emoji;
+  createMessageForm.backgroundEmoji = emoji;
 });
 
 const backgroundEmojiPicker = document.querySelector<HTMLButtonElement>(
@@ -83,11 +82,11 @@ messageForm.addEventListener('submit', (e) => {
     return;
   }
 
-  const message = messageInput.value;
-  const emoji = selectedEmoji;
-  const backgroundEmoji = selectedBackgroundEmoji;
-
-  const mojiMessage = createMojiMessage(message, emoji, backgroundEmoji);
+  const mojiMessage = createMojiMessage({
+    message: createMessageForm.message ?? '',
+    messageEmoji: createMessageForm.messageEmoji ?? '',
+    backgroundEmoji: createMessageForm.backgroundEmoji ?? '',
+  });
 
   mojiOutput.textContent = mojiMessage;
 
@@ -95,9 +94,9 @@ messageForm.addEventListener('submit', (e) => {
 
   window.dataLayer?.push({
     event: 'convert_message',
-    message_length: message.length,
-    emoji,
-    background_emoji: backgroundEmoji,
+    message_length: createMessageForm.message?.length,
+    emoji: createMessageForm.messageEmoji,
+    background_emoji: createMessageForm.backgroundEmoji,
   });
 });
 
@@ -109,6 +108,8 @@ function validateMessageForm() {
 }
 
 messageInput.addEventListener('input', () => {
+  createMessageForm.message = messageInput.value;
+
   validateMessage();
 });
 
@@ -132,7 +133,7 @@ function validateMessage() {
 }
 
 function validateEmoji() {
-  if (!selectedEmoji) {
+  if (!createMessageForm.messageEmoji) {
     messageEmojiPicker.classList.add('invalid');
     messageEmojiError.textContent = 'Please select an emoji.';
     return false;
@@ -155,9 +156,9 @@ copyMojiMessage.addEventListener('click', () => {
 
   window.dataLayer?.push({
     event: 'copy_message',
-    message_length: messageInput.value.length,
-    emoji: selectedEmoji,
-    background_emoji: selectedBackgroundEmoji,
+    message_length: createMessageForm.message?.length,
+    emoji: createMessageForm.messageEmoji,
+    background_emoji: createMessageForm.backgroundEmoji,
   });
 
   copyPending.classList.add('hidden');

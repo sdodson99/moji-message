@@ -1,37 +1,40 @@
 import { createMojiMessage } from '../create-moji-message';
+import { CreateMojiMessageRequest } from '../create-moji-message-request';
 
 describe('createMojiMessage', () => {
-  let messageInput: string;
-  let emoji: string;
-  let backgroundEmoji: string;
+  let request: CreateMojiMessageRequest;
 
   beforeEach(() => {
-    messageInput = 'abc defghijklmnopqrstuvwxyz';
-    emoji = '🔴';
-    backgroundEmoji = '⚪️';
+    request = {
+      message: 'abc defghijklmnopqrstuvwxyz',
+      messageEmoji: '🔴',
+      backgroundEmoji: '⚪️',
+    };
   });
 
   it('should return encoded message', () => {
-    const mojiMessage = createMojiMessage(messageInput, emoji, backgroundEmoji);
+    const mojiMessage = createMojiMessage(request);
 
     expect(mojiMessage).toMatchSnapshot();
   });
 
   it('should encode message with emoji', () => {
-    const mojiMessage = createMojiMessage(messageInput, emoji, backgroundEmoji);
+    const mojiMessage = createMojiMessage(request);
 
-    expect(mojiMessage).toContain(emoji);
+    expect(mojiMessage).toContain(request.messageEmoji);
   });
 
   it('should encode message background with background emoji', () => {
-    const mojiMessage = createMojiMessage(messageInput, emoji, backgroundEmoji);
+    const mojiMessage = createMojiMessage(request);
 
-    expect(mojiMessage).toContain(backgroundEmoji);
+    expect(mojiMessage).toContain(request.backgroundEmoji);
   });
 
   it('should return empty message for unknown characters', () => {
-    const mojiMessage = createMojiMessage('%@#$', emoji, backgroundEmoji);
+    request.message = '%@#$';
 
-    expect(mojiMessage).not.toContain(emoji);
+    const mojiMessage = createMojiMessage(request);
+
+    expect(mojiMessage).toBeFalsy();
   });
 });

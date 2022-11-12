@@ -1,19 +1,24 @@
 import { CharacterMatrixMap } from './character-matrix-map';
+import { CreateMojiMessageRequest } from './create-moji-message-request';
 
-export function createMojiMessage(
-  message: string,
-  messageEmoji: string,
-  backgroundEmoji: string
-) {
+export function createMojiMessage({
+  message,
+  messageEmoji,
+  backgroundEmoji,
+}: CreateMojiMessageRequest) {
   const messageCharacters = [...message];
 
   const mojiMessageCharacters = messageCharacters.map((c) =>
     createMojiCharacter(c, messageEmoji, backgroundEmoji)
   );
 
-  const mojiMessage = mojiMessageCharacters.join(
-    createCharacterGap(backgroundEmoji)
-  );
+  const mojiMessage = mojiMessageCharacters
+    .filter(Boolean)
+    .join(createCharacterGap(backgroundEmoji));
+
+  if (!mojiMessage) {
+    return mojiMessage;
+  }
 
   const paddedMojiMessage = [
     createLine(backgroundEmoji),
