@@ -6,10 +6,12 @@ import { createMojiMessage } from './domain';
 const messageForm = document.querySelector<HTMLFormElement>('#messageForm')!;
 const messageInput = document.querySelector<HTMLInputElement>('#message')!;
 const messageInputError = document.querySelector<HTMLElement>('#messageError')!;
-const mojiOutputSection = document.querySelector<HTMLElement>('#mojiOutputSection')!;
+const mojiOutputSection =
+  document.querySelector<HTMLElement>('#mojiOutputSection')!;
 const mojiOutput = document.querySelector<HTMLElement>('#mojiOutput')!;
 
-const copyMojiMessage = document.querySelector<HTMLButtonElement>('#copyMojiMessage')!;
+const copyMojiMessage =
+  document.querySelector<HTMLButtonElement>('#copyMojiMessage')!;
 const copyPending = document.querySelector<HTMLElement>('#copyPending')!;
 const copySuccess = document.querySelector<HTMLElement>('#copySuccess')!;
 
@@ -46,7 +48,9 @@ messageForm.addEventListener('submit', (e) => {
   messageForm.classList.add('form-submitted');
 
   if (!validateMessageForm()) {
-    const firstInvalidInput = document.querySelectorAll<HTMLElement>('#messageForm .invalid')[0];
+    const firstInvalidInput = document.querySelectorAll<HTMLElement>(
+      '#messageForm .invalid'
+    )[0];
 
     firstInvalidInput?.focus();
 
@@ -62,7 +66,11 @@ messageForm.addEventListener('submit', (e) => {
 
   mojiOutputSection.classList.remove('hidden');
 
-  window.dataLayer?.push({ event: 'convert_message', message_length: message.length, emoji });
+  window.dataLayer?.push({
+    event: 'convert_message',
+    message_length: message.length,
+    emoji,
+  });
 });
 
 function validateMessageForm() {
@@ -120,7 +128,11 @@ copyMojiMessage.addEventListener('click', () => {
   const message = messageInput.value;
   const emoji = selectedEmoji;
 
-  window.dataLayer?.push({ event: 'copy_message', message_length: message.length, emoji });
+  window.dataLayer?.push({
+    event: 'copy_message',
+    message_length: message.length,
+    emoji,
+  });
 
   copyPending.classList.add('hidden');
   copyPending.classList.remove('flex');
