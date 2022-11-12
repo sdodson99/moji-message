@@ -15,7 +15,15 @@ export function createMojiMessage(
     createCharacterGap(backgroundEmoji)
   );
 
-  return mojiMessage;
+  const paddedMojiMessage = [
+    createLine(backgroundEmoji),
+    '\n',
+    mojiMessage,
+    '\n',
+    createLine(backgroundEmoji),
+  ].join('');
+
+  return paddedMojiMessage;
 }
 
 function createMojiCharacter(
@@ -47,6 +55,9 @@ function createMojiCharacterRow(
     createMojiCharacterCell(cell, messageEmoji, backgroundEmoji)
   );
 
+  mojiCharacterCells.unshift(backgroundEmoji);
+  mojiCharacterCells.push(backgroundEmoji);
+
   return mojiCharacterCells.join('');
 }
 
@@ -63,5 +74,9 @@ function createMojiCharacterCell(
 }
 
 function createCharacterGap(emoji: string) {
-  return `\n${emoji.repeat(5)}\n`;
+  return `\n${createLine(emoji)}\n`;
+}
+
+function createLine(emoji: string) {
+  return `${emoji.repeat(7)}`;
 }
