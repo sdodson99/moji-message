@@ -4,3 +4,4 @@ todo.txt
 .firebase
 coverage
 test-results
+*.log

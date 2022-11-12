@@ -37,15 +37,20 @@ messageEmojiPicker.addEventListener('click', () => {
 });
 
 let selectedEmoji: string;
+let selectedBackgroundEmoji: string = '◻️';
 
-emojiPickerPopup.addEventListener('emoji:select', (e) => {
-  emojiPickerPopup.referenceElement?.replaceChildren(e.emoji);
+emojiPickerPopup.addEventListener('emoji:select', ({ emoji }) => {
+  emojiPickerPopup.referenceElement?.replaceChildren(emoji);
 
   if (emojiPickerPopup.referenceElement === messageEmojiPicker) {
-    selectedEmoji = e.emoji;
+    selectedEmoji = emoji;
 
     validateEmoji();
+
+    return;
   }
+
+  selectedBackgroundEmoji = emoji;
 });
 
 const backgroundEmojiPicker = document.querySelector<HTMLButtonElement>(
@@ -76,7 +81,7 @@ messageForm.addEventListener('submit', (e) => {
 
   const message = messageInput.value;
   const emoji = selectedEmoji;
-  const backgroundEmoji = backgroundEmojiPicker.innerText!;
+  const backgroundEmoji = selectedBackgroundEmoji;
 
   const mojiMessage = createMojiMessage(message, emoji, backgroundEmoji);
 
@@ -88,6 +93,7 @@ messageForm.addEventListener('submit', (e) => {
     event: 'convert_message',
     message_length: message.length,
     emoji,
+    background_emoji: backgroundEmoji,
   });
 });
 
@@ -143,13 +149,11 @@ copyMojiMessage.addEventListener('click', () => {
 
   copy(mojiOutput.textContent);
 
-  const message = messageInput.value;
-  const emoji = selectedEmoji;
-
   window.dataLayer?.push({
     event: 'copy_message',
-    message_length: message.length,
-    emoji,
+    message_length: messageInput.value.length,
+    emoji: selectedEmoji,
+    background_emoji: selectedBackgroundEmoji,
   });
 
   copyPending.classList.add('hidden');
