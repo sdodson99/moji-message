@@ -5,7 +5,7 @@ const config: PlaywrightTestConfig = {
   retries: 1,
   use: {
     baseURL: process.env.BASE_URL || 'http://127.0.0.1:5173',
-    headless: false,
+    headless: true,
     permissions: ['clipboard-read'],
   },
 };

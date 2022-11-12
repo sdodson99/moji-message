@@ -6,7 +6,6 @@ module.exports = {
     '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
   },
   testMatch: ['<rootDir>/src/**/*.test.[jt]s?(x)'],
-  collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/**/*.[jt]s?(x)'],
   coverageThreshold: {
     global: {
