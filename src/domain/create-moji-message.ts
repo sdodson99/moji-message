@@ -74,7 +74,7 @@ function createMojiCharacterCell(
 }
 
 function createCharacterGap(emoji: string) {
-  return `\n${createLine(emoji)}\n`;
+  return `\n${createLine(emoji)}\n${createLine(emoji)}\n`;
 }
 
 function createLine(emoji: string) {
