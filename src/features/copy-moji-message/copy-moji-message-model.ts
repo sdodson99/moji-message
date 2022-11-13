@@ -1,12 +1,8 @@
-import { CreateMojiMessageRequest } from '../../domain';
 import copy from 'copy-to-clipboard';
+import { CreateMojiMessageStore } from '../../domain/create-moji-message-store';
 
 export class CopyMojiMessageModel {
-  private _currentMojiMessageRequest?: CreateMojiMessageRequest;
-
-  set currentMojiMessageRequest(value: CreateMojiMessageRequest) {
-    this._currentMojiMessageRequest = value;
-  }
+  constructor(private createMojiMessageStore: CreateMojiMessageStore) {}
 
   copyMojiMessage(mojiMessageOutput: string) {
     copy(mojiMessageOutput);
@@ -15,7 +11,8 @@ export class CopyMojiMessageModel {
   }
 
   private logCopyMojiMessageEvent() {
-    const mojiMessageRequest = this._currentMojiMessageRequest;
+    const mojiMessageRequest =
+      this.createMojiMessageStore.currentMojiMessageRequest;
 
     if (!mojiMessageRequest) {
       return;
