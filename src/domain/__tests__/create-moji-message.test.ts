@@ -6,7 +6,7 @@ describe('createMojiMessage', () => {
 
   beforeEach(() => {
     request = {
-      message: 'abc defghijklmnopqrstuvwxyz',
+      message: 'abcdefghijklmnopqrstuvwxyz ?! 1234567890',
       messageEmoji: '🔴',
       backgroundEmoji: '⚪️',
     };
