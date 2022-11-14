@@ -1,13 +1,23 @@
 import copy from 'copy-to-clipboard';
 import { CreateMojiMessageStore } from '../../domain/create-moji-message-store';
 
+const MARKETING_SUFFIX =
+  '🚀 Powered by Moji Message (https://emoji.seandodson.com)';
+
 export class CopyMojiMessageModel {
   constructor(private createMojiMessageStore: CreateMojiMessageStore) {}
 
   copyMojiMessage(mojiMessageOutput: string) {
-    copy(mojiMessageOutput);
+    const mojiMessageCopyText =
+      this.createMojiMessageCopyText(mojiMessageOutput);
+
+    copy(mojiMessageCopyText);
 
     this.logCopyMojiMessageEvent();
+  }
+
+  private createMojiMessageCopyText(mojiMessageOutput: string) {
+    return `${mojiMessageOutput}\n\n${MARKETING_SUFFIX}`;
   }
 
   private logCopyMojiMessageEvent() {
