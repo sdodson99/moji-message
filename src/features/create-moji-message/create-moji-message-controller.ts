@@ -88,7 +88,7 @@ export class CreateMojiMessageController {
       return false;
     }
 
-    this.createMojiMessageView.setMessageEmojiPickerValid();
+    this.createMojiMessageView.setMessageInputValid();
     this.createMojiMessageView.clearMessageInputErrorMessage();
 
     return true;
