@@ -1,8 +1,8 @@
 import {
   createMojiMessage as createMojiMessageBase,
   CreateMojiMessageRequest,
+  CreateMojiMessageStore,
 } from '../../domain';
-import { CreateMojiMessageStore } from '../../domain/create-moji-message-store';
 
 export type CreateMojiMessageForm = {
   message?: string;

@@ -4,7 +4,7 @@ import {
   CopyMojiMessageViewElements,
   CopyMojiMessageModel,
 } from '..';
-import { CreateMojiMessageStore } from '../../../domain/create-moji-message-store';
+import { CreateMojiMessageStore } from '../../../domain';
 import copy from 'copy-to-clipboard';
 
 jest.mock('copy-to-clipboard');
@@ -14,6 +14,8 @@ describe('copy moji message feature', () => {
   let createMojiMessageStore: CreateMojiMessageStore;
   let elements: CopyMojiMessageViewElements;
   let mockDataLayerPush: jest.Mock;
+
+  let mojiMessageOutputText: string;
 
   beforeEach(() => {
     createMojiMessageStore = new CreateMojiMessageStore();
@@ -31,6 +33,9 @@ describe('copy moji message feature', () => {
       mojiMessageOutput: document.createElement('div'),
     };
 
+    mojiMessageOutputText = 'Hello world';
+    elements.mojiMessageOutput.textContent = mojiMessageOutputText;
+
     mockDataLayerPush = jest.fn();
     window.dataLayer = {
       push: mockDataLayerPush,
@@ -47,13 +52,10 @@ describe('copy moji message feature', () => {
   });
 
   it('should copy moji message output with marketing text to the clipboard', () => {
-    const mojiMessageOutput = 'Hello world';
-    elements.mojiMessageOutput.textContent = mojiMessageOutput;
-
     elements.copyMojiMessageButton.click();
 
     expect(mockCopy).toBeCalledWith(
-      'Hello world\n\n🚀 Powered by Moji Message (https://emoji.seandodson.com)'
+      `${mojiMessageOutputText}\n\n🚀 Powered by Moji Message (https://emoji.seandodson.com)`
     );
   });
 
@@ -66,8 +68,6 @@ describe('copy moji message feature', () => {
   });
 
   it('should show temporarily display copy success message after copy', async () => {
-    elements.mojiMessageOutput.textContent = 'Hello world';
-
     elements.copyMojiMessageButton.click();
 
     expect(elements.copySuccessDisplay.classList).toContain('flex');
@@ -81,8 +81,6 @@ describe('copy moji message feature', () => {
 
   describe('analytics', () => {
     it('should log copy_message event for moji message inputs', () => {
-      elements.mojiMessageOutput.textContent = 'Hello world';
-
       elements.copyMojiMessageButton.click();
 
       expect(mockDataLayerPush).toBeCalledWith({
@@ -94,7 +92,6 @@ describe('copy moji message feature', () => {
     });
 
     it('should not log copy_message event when moji message inputs not defined', () => {
-      elements.mojiMessageOutput.textContent = 'Hello world';
       createMojiMessageStore.currentMojiMessageRequest = undefined;
 
       elements.copyMojiMessageButton.click();

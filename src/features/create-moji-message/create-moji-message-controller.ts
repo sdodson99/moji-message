@@ -80,14 +80,6 @@ export class CreateMojiMessageController {
       return false;
     }
 
-    if (!messageInputValidity.valid) {
-      this.createMojiMessageView.setMessageInputInvalid();
-      this.createMojiMessageView.setMessageInputErrorMessage(
-        'Invalid message.'
-      );
-      return false;
-    }
-
     this.createMojiMessageView.setMessageInputValid();
     this.createMojiMessageView.clearMessageInputErrorMessage();
 

@@ -4,7 +4,7 @@ export type EmojiSelectEvent = {
   emoji: string;
 };
 
-type CreateMojiMessageViewElements = {
+export type CreateMojiMessageViewElements = {
   createMojiMessageForm: HTMLFormElement;
   messageInput: HTMLInputElement;
   messageInputError: HTMLElement;
@@ -133,7 +133,7 @@ export class CreateMojiMessageView {
   }
 
   private openEmojiPicker(rootElement: HTMLButtonElement) {
-    rootElement.scrollIntoView({
+    rootElement?.scrollIntoView?.({
       behavior: 'smooth',
     });
 

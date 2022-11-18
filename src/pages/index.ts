@@ -10,7 +10,7 @@ import {
   CreateMojiMessageModel,
   CreateMojiMessageController,
 } from '../features/create-moji-message';
-import { CreateMojiMessageStore } from '../domain/create-moji-message-store';
+import { CreateMojiMessageStore } from '../domain';
 
 const messageForm = document.querySelector<HTMLFormElement>('#messageForm')!;
 

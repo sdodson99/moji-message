@@ -1,5 +1,5 @@
 import copy from 'copy-to-clipboard';
-import { CreateMojiMessageStore } from '../../domain/create-moji-message-store';
+import { CreateMojiMessageStore } from '../../domain';
 
 const MARKETING_SUFFIX =
   '🚀 Powered by Moji Message (https://emoji.seandodson.com)';
