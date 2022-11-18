@@ -2,7 +2,7 @@
 
 An epic web app for encoding a message with emojis.
 
-Website: https://moji.seandodson.com/
+Website: https://emoji.seandodson.com/
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ Website: https://moji.seandodson.com/
 
 ## Tech Stack
 
-- JavaScript
+- TypeScript
 - Tailwind
 - Vite
 - Google Analytics
