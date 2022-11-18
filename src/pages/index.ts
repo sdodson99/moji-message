@@ -4,13 +4,13 @@ import {
   CopyMojiMessageController,
   CopyMojiMessageModel,
   CopyMojiMessageView,
-} from './features/copy-moji-message';
+} from '../features/copy-moji-message';
 import {
   CreateMojiMessageView,
   CreateMojiMessageModel,
   CreateMojiMessageController,
-} from './features/create-moji-message';
-import { CreateMojiMessageStore } from './domain/create-moji-message-store';
+} from '../features/create-moji-message';
+import { CreateMojiMessageStore } from '../domain/create-moji-message-store';
 
 const messageForm = document.querySelector<HTMLFormElement>('#messageForm')!;
 
