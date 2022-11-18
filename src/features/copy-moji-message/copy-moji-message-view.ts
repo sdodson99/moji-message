@@ -1,4 +1,4 @@
-type CopyMojiMessageViewElements = {
+export type CopyMojiMessageViewElements = {
   copyMojiMessageButton: HTMLButtonElement;
   mojiMessageOutput: HTMLElement;
   copyReadyDisplay: HTMLElement;
