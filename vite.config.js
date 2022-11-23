@@ -1,9 +1,11 @@
-/** @type {import('vite').UserConfig} */
-export default {
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+
+export default defineConfig({
   root: './src/pages',
-  publicDir: '../public',
+  publicDir: resolve(__dirname, 'src/public'),
   build: {
-    outDir: '../../dist',
+    outDir: resolve(__dirname, 'dist'),
     emptyOutDir: true,
   },
-};
+});
