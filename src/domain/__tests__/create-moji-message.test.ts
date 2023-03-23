@@ -1,5 +1,7 @@
-import { createMojiMessage } from '../create-moji-message';
-import { CreateMojiMessageRequest } from '../create-moji-message-request';
+import {
+  createMojiMessage,
+  CreateMojiMessageRequest,
+} from '../create-moji-message';
 
 describe('createMojiMessage', () => {
   let request: CreateMojiMessageRequest;
@@ -12,25 +14,25 @@ describe('createMojiMessage', () => {
     };
   });
 
-  it('should return encoded message', () => {
+  it('returns encoded message', () => {
     const mojiMessage = createMojiMessage(request);
 
     expect(mojiMessage).toMatchSnapshot();
   });
 
-  it('should encode message with emoji', () => {
+  it('encodes message with emoji', () => {
     const mojiMessage = createMojiMessage(request);
 
     expect(mojiMessage).toContain(request.messageEmoji);
   });
 
-  it('should encode message background with background emoji', () => {
+  it('encodes message background with background emoji', () => {
     const mojiMessage = createMojiMessage(request);
 
     expect(mojiMessage).toContain(request.backgroundEmoji);
   });
 
-  it('should return empty message for unknown characters', () => {
+  it('returns empty message for unknown characters', () => {
     request.message = '%@#$';
 
     const mojiMessage = createMojiMessage(request);

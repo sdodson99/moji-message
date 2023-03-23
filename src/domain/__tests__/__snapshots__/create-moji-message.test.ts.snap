@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`createMojiMessage should return encoded message 1`] = `
+exports[`createMojiMessage returns encoded message 1`] = `
 "⚪️⚪️⚪️⚪️⚪️⚪️⚪️
 ⚪️⚪️🔴🔴🔴⚪️⚪️
 ⚪️🔴⚪️⚪️⚪️🔴⚪️

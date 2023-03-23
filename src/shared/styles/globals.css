@@ -50,19 +50,13 @@ header {
 }
 
 .form-error {
-  @apply hidden text-red-700 text-sm;
+  @apply text-red-700 text-sm;
 }
 
-.form-submitted {
-  input.invalid {
-    @apply border-red-700 outline-red-700;
-  }
+input.invalid {
+  @apply border-red-700 outline-red-700;
+}
 
-  .emoji-picker.invalid {
-    @apply border-red-700;
-  }
-
-  .form-error {
-    @apply block;
-  }
+.emoji-picker.invalid {
+  @apply border-red-700;
 }

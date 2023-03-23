@@ -1,5 +1,10 @@
 import { CharacterMatrixMap } from './character-matrix-map';
-import { CreateMojiMessageRequest } from './create-moji-message-request';
+
+export type CreateMojiMessageRequest = {
+  message: string;
+  messageEmoji: string;
+  backgroundEmoji: string;
+};
 
 export function createMojiMessage({
   message,

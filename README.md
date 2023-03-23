@@ -12,9 +12,9 @@ Website: https://emoji.seandodson.com/
 
 ## Tech Stack
 
+- NextJS
 - TypeScript
 - Tailwind
-- Vite
 - Google Analytics
 - Firebase Hosting
 
