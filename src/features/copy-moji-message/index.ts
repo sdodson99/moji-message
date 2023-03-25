@@ -1,1 +1,1 @@
-export { CopyMojiMessageButton } from "./copy-moji-message-button";
+export { CopyMojiMessageButton } from './copy-moji-message-button';

@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 input,
 textarea {
-  @apply border rounded p-1 block;
+  @apply block rounded border p-1;
 }
 
 .container {
@@ -16,11 +16,11 @@ textarea {
 }
 
 .btn {
-  @apply px-4 py-2 bg-gray-50 hover:bg-gray-400 rounded transition;
+  @apply rounded bg-gray-50 px-4 py-2 transition hover:bg-gray-400;
 }
 
 .btn-primary {
-  @apply bg-green-700 hover:bg-green-900 text-white;
+  @apply bg-green-700 text-white hover:bg-green-900;
 }
 
 .btn-secondary {

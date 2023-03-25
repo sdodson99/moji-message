@@ -1,19 +1,25 @@
 import { CreateMojiMessageRequest } from '@/entities/moji-message';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { CreateMojiMessageForm, CreateMojiMessageFormProps } from './create-moji-message-form';
+import {
+  CreateMojiMessageForm,
+  CreateMojiMessageFormProps,
+} from './create-moji-message-form';
 import '@testing-library/jest-dom';
 
 vi.mock('@emoji-mart/react');
 
-async function completeCreateMojiMessageForm(request: Partial<CreateMojiMessageRequest>) {
+async function completeCreateMojiMessageForm(
+  request: Partial<CreateMojiMessageRequest>
+) {
   if (request.message) {
     const messageInput = screen.getByLabelText('Enter a Message');
     await userEvent.type(messageInput, request.message);
   }
 
   if (request.messageEmoji) {
-    const openMessageEmojiPickerButton = screen.getByLabelText('Choose an Emoji');
+    const openMessageEmojiPickerButton =
+      screen.getByLabelText('Choose an Emoji');
     await userEvent.click(openMessageEmojiPickerButton);
 
     const messageEmoji = screen.getByText(request.messageEmoji);
@@ -21,7 +27,9 @@ async function completeCreateMojiMessageForm(request: Partial<CreateMojiMessageR
   }
 
   if (request.backgroundEmoji) {
-    const openBackgroundEmojiPickeButton = screen.getByLabelText('Choose a Background Emoji');
+    const openBackgroundEmojiPickeButton = screen.getByLabelText(
+      'Choose a Background Emoji'
+    );
     await userEvent.click(openBackgroundEmojiPickeButton);
 
     const backgroundEmoji = screen.getByText(request.backgroundEmoji);
@@ -54,11 +62,14 @@ describe('<CreateMojiMessageForm />', () => {
 
     await submitCreateMojiMessageForm();
 
-    expect(props.onMojiMessageCreate).toBeCalledWith(expect.stringContaining('💜✨'), {
-      message: 'hi',
-      messageEmoji: '💜',
-      backgroundEmoji: '✨',
-    });
+    expect(props.onMojiMessageCreate).toBeCalledWith(
+      expect.stringContaining('💜✨'),
+      {
+        message: 'hi',
+        messageEmoji: '💜',
+        backgroundEmoji: '✨',
+      }
+    );
   });
 
   it('logs convert message event for form inputs', async () => {

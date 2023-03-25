@@ -1,1 +1,1 @@
-export { CreateMojiMessageForm } from "./create-moji-message-form";
+export { CreateMojiMessageForm } from './create-moji-message-form';

@@ -1,4 +1,7 @@
-import { createMojiMessage, CreateMojiMessageRequest } from '@/entities/moji-message';
+import {
+  createMojiMessage,
+  CreateMojiMessageRequest,
+} from '@/entities/moji-message';
 import styles from './create-moji-message-form.module.css';
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
@@ -17,10 +20,15 @@ type EmojiSelectEvent = {
 };
 
 export type CreateMojiMessageFormProps = {
-  onMojiMessageCreate?: (mojiMessage: string, createMojiMessageRequest: CreateMojiMessageRequest) => void;
+  onMojiMessageCreate?: (
+    mojiMessage: string,
+    createMojiMessageRequest: CreateMojiMessageRequest
+  ) => void;
 };
 
-export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessageFormProps) {
+export function CreateMojiMessageForm({
+  onMojiMessageCreate,
+}: CreateMojiMessageFormProps) {
   const {
     formState: { errors },
     register,
@@ -48,7 +56,8 @@ export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessage
     required: 'Please select a background emoji.',
   });
 
-  const [isMessageEmojiPickerOpen, setIsMessageEmojiPickerOpen] = useState(false);
+  const [isMessageEmojiPickerOpen, setIsMessageEmojiPickerOpen] =
+    useState(false);
 
   const onOpenMessageEmojiPickerClick = () => {
     setIsMessageEmojiPickerOpen(true);
@@ -64,7 +73,8 @@ export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessage
     setFocus('messageEmoji');
   };
 
-  const [isBackgroundEmojiPickerOpen, setIsBackgroundEmojiPickerOpen] = useState(false);
+  const [isBackgroundEmojiPickerOpen, setIsBackgroundEmojiPickerOpen] =
+    useState(false);
 
   const onOpenBackgroundEmojiPickerClick = () => {
     setIsBackgroundEmojiPickerOpen(true);
@@ -80,7 +90,9 @@ export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessage
     setFocus('backgroundEmoji');
   };
 
-  const onSubmit = (createMojiMessageFieldValues: CreateMojiMessageFieldValues) => {
+  const onSubmit = (
+    createMojiMessageFieldValues: CreateMojiMessageFieldValues
+  ) => {
     const mojiMessage = createMojiMessage(createMojiMessageFieldValues);
 
     onMojiMessageCreate?.(mojiMessage, createMojiMessageFieldValues);
@@ -122,9 +134,12 @@ export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessage
             id="messageEmojiPicker"
             ref={messageEmojiField.ref}
             aria-label="Open emoji selector"
-            className={classNames('mt-1 border rounded w-10 h-10 flex items-center justify-center', {
-              [styles.invalid]: errors.messageEmoji,
-            })}
+            className={classNames(
+              'mt-1 flex h-10 w-10 items-center justify-center rounded border',
+              {
+                [styles.invalid]: errors.messageEmoji,
+              }
+            )}
             type="button"
             onClick={onOpenMessageEmojiPickerClick}
           >
@@ -143,7 +158,11 @@ export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessage
               </svg>
             )}
           </button>
-          <Popup trigger={() => <span />} open={isMessageEmojiPickerOpen} onClose={onMessageEmojiPickerClose}>
+          <Popup
+            trigger={() => <span />}
+            open={isMessageEmojiPickerOpen}
+            onClose={onMessageEmojiPickerClose}
+          >
             <Picker onEmojiSelect={onMessageEmojiSelect} autoFocus />
           </Popup>
         </div>
@@ -162,9 +181,12 @@ export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessage
             id="backgroundEmojiPicker"
             ref={backgroundEmojiField.ref}
             aria-label="Open background emoji selector"
-            className={classNames('mt-1 border rounded w-10 h-10 flex items-center justify-center', {
-              [styles.invalid]: errors.backgroundEmoji,
-            })}
+            className={classNames(
+              'mt-1 flex h-10 w-10 items-center justify-center rounded border',
+              {
+                [styles.invalid]: errors.backgroundEmoji,
+              }
+            )}
             type="button"
             onClick={onOpenBackgroundEmojiPickerClick}
           >
@@ -183,7 +205,11 @@ export function CreateMojiMessageForm({ onMojiMessageCreate }: CreateMojiMessage
               </svg>
             )}
           </button>
-          <Popup trigger={() => <span />} open={isBackgroundEmojiPickerOpen} onClose={onBackgroundEmojiPickerClose}>
+          <Popup
+            trigger={() => <span />}
+            open={isBackgroundEmojiPickerOpen}
+            onClose={onBackgroundEmojiPickerClose}
+          >
             <Picker onEmojiSelect={onBackgroundEmojiSelect} autoFocus />
           </Popup>
         </div>

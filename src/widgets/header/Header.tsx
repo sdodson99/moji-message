@@ -1,10 +1,10 @@
-import Image from "next/image";
-import classNames from "classnames";
-import styles from "./header.module.css";
+import Image from 'next/image';
+import classNames from 'classnames';
+import styles from './header.module.css';
 
 export function Header() {
   return (
-    <header className={classNames("py-8 shadow-md", styles.header)}>
+    <header className={classNames('py-8 shadow-md', styles.header)}>
       <div className="container flex items-center">
         <div>
           <Image
@@ -16,8 +16,8 @@ export function Header() {
           />
         </div>
         <div className="ml-5">
-          <h1 className="font-medium text-green-700 text-lg">Moji Message</h1>
-          <div className="font-light text-gray-700 text-sm italic">
+          <h1 className="text-lg font-medium text-green-700">Moji Message</h1>
+          <div className="text-sm font-light italic text-gray-700">
             Encode a message with emojis!
           </div>
         </div>

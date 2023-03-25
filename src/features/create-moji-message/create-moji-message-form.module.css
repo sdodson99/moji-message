@@ -1,5 +1,5 @@
 .formError {
-  @apply text-red-700 text-sm;
+  @apply text-sm text-red-700;
 }
 
 .invalid {

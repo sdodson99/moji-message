@@ -1,6 +1,6 @@
-import { Header } from "@/widgets/header";
-import { Footer } from "@/widgets/footer";
-import { ConvertToMojiMessage } from "@/widgets/convert-to-moji-message";
+import { Header } from '@/widgets/header';
+import { Footer } from '@/widgets/footer';
+import { ConvertToMojiMessage } from '@/widgets/convert-to-moji-message';
 
 export default function Index() {
   return (

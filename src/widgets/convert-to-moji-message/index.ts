@@ -1,1 +1,1 @@
-export { ConvertToMojiMessage } from "./convert-to-moji-message";
+export { ConvertToMojiMessage } from './convert-to-moji-message';

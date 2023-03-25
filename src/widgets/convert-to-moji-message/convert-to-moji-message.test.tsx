@@ -21,7 +21,9 @@ async function submitCreateMojiMessageForm(request: CreateMojiMessageRequest) {
   const messageEmoji = screen.getByText(request.messageEmoji);
   await userEvent.click(messageEmoji);
 
-  const openBackgroundEmojiPickeButton = screen.getByLabelText('Choose a Background Emoji');
+  const openBackgroundEmojiPickeButton = screen.getByLabelText(
+    'Choose a Background Emoji'
+  );
   await userEvent.click(openBackgroundEmojiPickeButton);
 
   const backgroundEmoji = screen.getByText(request.backgroundEmoji);

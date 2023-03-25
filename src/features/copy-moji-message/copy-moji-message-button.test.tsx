@@ -1,6 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { CopyMojiMessageButton, CopyMojiMessageButtonProps } from './copy-moji-message-button';
+import {
+  CopyMojiMessageButton,
+  CopyMojiMessageButtonProps,
+} from './copy-moji-message-button';
 import copy from 'copy-to-clipboard';
 import '@testing-library/jest-dom';
 import { Mock } from 'vitest';
@@ -28,7 +31,9 @@ describe('<CopyMojiMessageButton />', () => {
     const copyButton = screen.getByText('Copy');
     await userEvent.click(copyButton);
 
-    expect(mockCopy).toBeCalledWith(`${props.mojiMessage}\n\n🚀 Powered by Moji Message (https://emoji.seandodson.com)`);
+    expect(mockCopy).toBeCalledWith(
+      `${props.mojiMessage}\n\n🚀 Powered by Moji Message (https://emoji.seandodson.com)`
+    );
   });
 
   it('logs copy moji message event when clicked', async () => {
@@ -62,7 +67,9 @@ describe('<CopyMojiMessageButton />', () => {
     const copySuccessText = await screen.findByText('Copied');
     expect(copySuccessText).toBeInTheDocument();
 
-    const copyReadyText = await screen.findByText('Copy', undefined, { timeout: 3000 });
+    const copyReadyText = await screen.findByText('Copy', undefined, {
+      timeout: 3000,
+    });
     expect(copyReadyText).toBeInTheDocument();
   });
 });
