@@ -1,0 +1,11 @@
+.formError {
+  @apply text-red-700 text-sm;
+}
+
+.invalid {
+  @apply border-red-700 outline-red-700;
+}
+
+.emojiPickerPopup {
+  max-width: 80vw;
+}

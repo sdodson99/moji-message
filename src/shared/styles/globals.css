@@ -3,16 +3,12 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 input,
 textarea {
   @apply border rounded p-1 block;
-}
-
-header {
-  font-family: 'Mitr', sans-serif;
 }
 
 .container {
@@ -29,34 +25,4 @@ header {
 
 .btn-secondary {
   @apply bg-gray-100 hover:bg-gray-200;
-}
-
-.moji-output-container {
-  min-height: 200px;
-
-  @apply rounded bg-gray-50 border;
-}
-
-.form-group {
-  @apply flex flex-col;
-}
-
-.emoji-picker {
-  @apply mt-1 border rounded w-10 h-10 flex items-center justify-center;
-}
-
-.emoji-picker-popup {
-  max-width: 80vw;
-}
-
-.form-error {
-  @apply text-red-700 text-sm;
-}
-
-input.invalid {
-  @apply border-red-700 outline-red-700;
-}
-
-.emoji-picker.invalid {
-  @apply border-red-700;
 }

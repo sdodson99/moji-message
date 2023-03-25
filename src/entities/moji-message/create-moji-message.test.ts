@@ -1,7 +1,4 @@
-import {
-  createMojiMessage,
-  CreateMojiMessageRequest,
-} from '../create-moji-message';
+import { createMojiMessage, CreateMojiMessageRequest } from '.';
 
 describe('createMojiMessage', () => {
   let request: CreateMojiMessageRequest;

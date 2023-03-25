@@ -236,7 +236,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [X, _, _, _, _],
     [X, X, X, X, X],
   ],
-  '?': [
+  "?": [
     [_, X, X, X, _],
     [X, _, _, _, X],
     [_, _, _, X, _],
@@ -245,7 +245,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [_, _, _, _, _],
     [_, _, X, _, _],
   ],
-  '!': [
+  "!": [
     [_, _, X, _, _],
     [_, _, X, _, _],
     [_, _, X, _, _],
@@ -254,7 +254,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [_, _, _, _, _],
     [_, _, X, _, _],
   ],
-  '0': [
+  "0": [
     [_, X, X, X, _],
     [X, _, _, _, X],
     [X, _, _, X, X],
@@ -263,7 +263,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [X, _, _, _, X],
     [_, X, X, X, _],
   ],
-  '1': [
+  "1": [
     [_, _, X, _, _],
     [_, X, X, _, _],
     [X, _, X, _, _],
@@ -272,7 +272,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [_, _, X, _, _],
     [X, X, X, X, X],
   ],
-  '2': [
+  "2": [
     [_, X, X, X, _],
     [X, _, _, _, X],
     [_, _, _, _, X],
@@ -281,7 +281,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [_, X, _, _, _],
     [X, X, X, X, X],
   ],
-  '3': [
+  "3": [
     [_, X, X, X, _],
     [X, _, _, _, X],
     [_, _, _, _, X],
@@ -290,7 +290,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [X, _, _, _, X],
     [_, X, X, X, _],
   ],
-  '4': [
+  "4": [
     [X, _, _, _, X],
     [X, _, _, _, X],
     [X, _, _, _, X],
@@ -299,7 +299,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [_, _, _, _, X],
     [_, _, _, _, X],
   ],
-  '5': [
+  "5": [
     [X, X, X, X, X],
     [X, _, _, _, _],
     [X, _, _, _, _],
@@ -308,7 +308,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [X, _, _, _, X],
     [_, X, X, X, _],
   ],
-  '6': [
+  "6": [
     [_, _, _, X, _],
     [_, _, X, _, _],
     [_, X, _, _, _],
@@ -317,7 +317,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [X, _, _, _, X],
     [_, X, X, X, _],
   ],
-  '7': [
+  "7": [
     [X, X, X, X, X],
     [_, _, _, _, X],
     [_, _, _, _, X],
@@ -326,7 +326,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [_, X, _, _, _],
     [X, _, _, _, _],
   ],
-  '8': [
+  "8": [
     [_, X, X, X, _],
     [X, _, _, _, X],
     [X, _, _, _, X],
@@ -335,7 +335,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [X, _, _, _, X],
     [_, X, X, X, _],
   ],
-  '9': [
+  "9": [
     [_, X, X, X, _],
     [X, _, _, _, X],
     [X, _, _, _, X],
@@ -344,7 +344,7 @@ export const CharacterMatrixMap: Record<string, boolean[][] | null> = {
     [_, _, X, _, _],
     [_, X, _, _, _],
   ],
-  ' ': [
+  " ": [
     [_, _, _, _, _],
     [_, _, _, _, _],
     [_, _, _, _, _],

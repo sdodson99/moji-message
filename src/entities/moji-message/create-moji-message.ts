@@ -1,4 +1,4 @@
-import { CharacterMatrixMap } from './character-matrix-map';
+import { CharacterMatrixMap } from "./character-matrix-map";
 
 export type CreateMojiMessageRequest = {
   message: string;
@@ -27,11 +27,11 @@ export function createMojiMessage({
 
   const paddedMojiMessage = [
     createLine(backgroundEmoji),
-    '\n',
+    "\n",
     mojiMessage,
-    '\n',
+    "\n",
     createLine(backgroundEmoji),
-  ].join('');
+  ].join("");
 
   return paddedMojiMessage;
 }
@@ -46,14 +46,14 @@ function createMojiCharacter(
   const characterMatrix = CharacterMatrixMap[upperCaseCharacter];
 
   if (!characterMatrix) {
-    return '';
+    return "";
   }
 
   const moijCharacterRows = characterMatrix.map((row) =>
     createMojiCharacterRow(row, messageEmoji, backgroundEmoji)
   );
 
-  return moijCharacterRows.join('\n');
+  return moijCharacterRows.join("\n");
 }
 
 function createMojiCharacterRow(
@@ -68,7 +68,7 @@ function createMojiCharacterRow(
   mojiCharacterCells.unshift(backgroundEmoji);
   mojiCharacterCells.push(backgroundEmoji);
 
-  return mojiCharacterCells.join('');
+  return mojiCharacterCells.join("");
 }
 
 function createMojiCharacterCell(
