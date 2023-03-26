@@ -26,3 +26,7 @@ textarea {
 .btn-secondary {
   @apply bg-gray-100 hover:bg-gray-200;
 }
+
+em-emoji-picker {
+  max-width: 80vw;
+}
