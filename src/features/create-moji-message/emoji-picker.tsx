@@ -76,7 +76,7 @@ export const EmojiPicker = forwardRef<HTMLButtonElement, EmojiPickerProps>(
           open={isEmojiPickerOpen}
           onClose={onEmojiPickerClose}
         >
-          <Picker onEmojiSelect={onEmojiSelect} autoFocus />
+          <Picker onEmojiSelect={onEmojiSelect} autoFocus dynamicWidth />
         </Popup>
       </>
     );

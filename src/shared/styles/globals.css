@@ -28,5 +28,11 @@ textarea {
 }
 
 em-emoji-picker {
-  max-width: 80vw;
+  width: 80vw;
+}
+
+@media (min-width: 640px) {
+  em-emoji-picker {
+    width: 400px;
+  }
 }
