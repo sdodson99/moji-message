@@ -23,13 +23,13 @@ Website: https://emoji.seandodson.com/
 1. Install packages.
 
 ```
-npm install
+pnpm install
 ```
 
 2. Start the application.
 
 ```
-npm run dev
+pnpm dev
 ```
 
 ## Contributing
