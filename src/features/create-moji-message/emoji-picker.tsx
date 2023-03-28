@@ -72,7 +72,8 @@ export const EmojiPicker = forwardRef<HTMLButtonElement, EmojiPickerProps>(
           )}
         </button>
         <Popup
-          trigger={() => <span />}
+          // Need to define a trigger to position popup accordingly - even though we're using a "controlled" popup.
+          trigger={<span />}
           open={isEmojiPickerOpen}
           onClose={onEmojiPickerClose}
         >

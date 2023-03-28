@@ -1,5 +1,0 @@
-.mojiMessageOutputContainer {
-  min-height: 200px;
-
-  @apply rounded border bg-gray-50;
-}

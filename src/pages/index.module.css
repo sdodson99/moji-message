@@ -1,0 +1,11 @@
+.layout {
+  --header-height: 120px;
+}
+
+.headerHeight {
+  height: var(--header-height);
+}
+
+.remainingHeightAboveFold {
+  min-height: calc(100vh - var(--header-height));
+}

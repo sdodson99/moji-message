@@ -2,9 +2,15 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import styles from './header.module.css';
 
-export function Header() {
+type HeaderProps = {
+  className?: string;
+};
+
+export function Header({ className }: HeaderProps) {
   return (
-    <header className={classNames('py-8 shadow-md', styles.header)}>
+    <header
+      className={classNames('flex py-8 shadow-md', styles.header, className)}
+    >
       <div className="container flex items-center">
         <div>
           <Image
