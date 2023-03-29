@@ -29,7 +29,30 @@ export const EmojiPicker = forwardRef<HTMLButtonElement, EmojiPickerProps>(
 
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
 
-    const onOpenEmojiPickerClick = () => setIsEmojiPickerOpen(true);
+    const getEmojiPickerAnchor = () => {
+      const openEmojiPickerButton = openEmojiPickerButtonRef.current;
+
+      const openEmojiPickerButtonLabel = openEmojiPickerButton?.labels?.[0];
+
+      // Attempt to scroll to a label so that the user can see what the emoji picker represents.
+      if (openEmojiPickerButtonLabel) {
+        return openEmojiPickerButtonLabel;
+      }
+
+      return openEmojiPickerButton;
+    };
+
+    const scrollToEmojiPickerAnchor = () => {
+      // SCROLL PICKER INTO VIEW TO LESSEN IMPACT OF WEIRD SCROLL WHEN PICKER GETS CLOSED ON MOBILE.
+      getEmojiPickerAnchor()?.scrollIntoView?.({
+        behavior: 'smooth',
+      });
+    };
+
+    const onOpenEmojiPickerClick = () => {
+      scrollToEmojiPickerAnchor();
+      setIsEmojiPickerOpen(true);
+    };
 
     const onEmojiSelect = ({ native }: EmojiMartSelectEvent) => {
       onSelectedEmojiChange?.({
@@ -40,6 +63,9 @@ export const EmojiPicker = forwardRef<HTMLButtonElement, EmojiPickerProps>(
 
     const onEmojiPickerClose = () => {
       setIsEmojiPickerOpen(false);
+
+      scrollToEmojiPickerAnchor();
+
       openEmojiPickerButtonRef.current?.focus();
     };
 
