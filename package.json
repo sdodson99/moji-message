@@ -22,7 +22,7 @@
     "test:update": "vitest run -u",
     "e2e": "playwright test",
     "e2e:update": "npm run e2e -- --update-snapshots",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && npm run export",
     "deploy": "firebase deploy --only hosting",
     "deploy:stage": "firebase hosting:channel:deploy --expires 7d",
     "clean": "rimraf out .next .firebase test-results coverage"
