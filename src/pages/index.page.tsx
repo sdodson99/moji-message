@@ -19,7 +19,9 @@ const firebaseConfig = {
 };
 
 export default function Index() {
-  const [firebaseApp] = useState<FirebaseApp>(() => initializeApp(firebaseConfig));
+  const [firebaseApp] = useState<FirebaseApp>(() =>
+    initializeApp(firebaseConfig)
+  );
 
   return (
     <div className={styles.layout}>
