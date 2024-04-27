@@ -16,10 +16,6 @@ export default function Index() {
             <h2 className="sr-only">Create a Moji Message</h2>
             <ConvertToMojiMessage />
           </section>
-          <section className="my-8">
-            <h2 className="text-2xl font-bold">Comments</h2>
-            <p className="mt-4">Comment section coming soon!</p>
-          </section>
         </main>
       </div>
       <Footer />
