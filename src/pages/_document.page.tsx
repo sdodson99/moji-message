@@ -22,7 +22,7 @@ export default function Document() {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Mitr:wght@300;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;700&display=swap"
           rel="stylesheet"
         />
       </Head>
