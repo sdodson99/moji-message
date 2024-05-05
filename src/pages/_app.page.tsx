@@ -11,6 +11,11 @@ export default function App({ Component, pageProps }: AppProps) {
         openGraph={{
           siteName: 'Moji Message',
           type: 'website',
+          images: [
+            {
+              url: 'https://emoji.seandodson.com/preview.png',
+            },
+          ],
         }}
       />
       <Component {...pageProps} />
