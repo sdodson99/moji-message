@@ -36,24 +36,6 @@ export default function Document() {
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QBF922" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
-
-        {/* Kofi Widget */}
-        {/* https://stackoverflow.com/questions/60615358/trying-to-run-ko-fi-widget-inside-a-react-component-running-script-commands-i */}
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>`,
-          }}
-        ></div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `<script>kofiWidgetOverlay.draw('sdodson', {
-              type: 'floating-chat',
-              'floating-chat.donateButton.text': 'Donate',
-              'floating-chat.donateButton.background-color': '#d9534f',
-              'floating-chat.donateButton.text-color': '#fff',
-              });</script>`,
-          }}
-        ></div>
       </body>
     </Html>
   );
