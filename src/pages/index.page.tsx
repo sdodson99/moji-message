@@ -21,7 +21,7 @@ export default function Index() {
           >
             <div className="container">
               <h1 className="text-5xl font-bold md:text-7xl">
-                The <span className="text-yellow-300">Fun</span> Way To Create a
+                The <span className="text-yellow-300">Fun</span> Way to Create a
                 Message
               </h1>
               <p className="mt-8 text-lg md:text-2xl">
@@ -41,8 +41,14 @@ export default function Index() {
             </div>
           </section>
           <section ref={formRef} className="container min-h-screen py-24">
-            <h2 className="sr-only">Create a Moji Message</h2>
-            <ConvertToMojiMessage />
+            <div>
+              <h2 className="text-4xl font-bold text-slate-800 md:text-5xl">
+                Create Your Moji Message
+              </h2>
+              <div className="mt-16">
+                <ConvertToMojiMessage />
+              </div>
+            </div>
           </section>
         </main>
       </div>

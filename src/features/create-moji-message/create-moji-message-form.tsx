@@ -92,7 +92,7 @@ export function CreateMojiMessageForm({
           </p>
         )}
       </div>
-      <div className="mt-4 flex flex-col">
+      <div className="mt-8 flex flex-col">
         <label htmlFor="messageEmojiPicker">
           Choose an <strong>Emoji</strong>
         </label>
@@ -113,7 +113,7 @@ export function CreateMojiMessageForm({
           </p>
         )}
       </div>
-      <div className="mt-4 flex flex-col">
+      <div className="mt-8 flex flex-col">
         <label htmlFor="backgroundEmojiPicker">
           Choose a <strong>Background Emoji</strong>
         </label>
@@ -135,7 +135,9 @@ export function CreateMojiMessageForm({
         )}
       </div>
       <div className="mt-8">
-        <button className="btn btn-primary">Convert Message</button>
+        <button className="btn btn-primary w-full md:w-auto">
+          Convert Message
+        </button>
       </div>
     </form>
   );

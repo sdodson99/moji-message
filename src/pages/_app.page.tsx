@@ -6,8 +6,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo
-        defaultTitle="Moji Message"
-        description="Encode a message with emojis!"
+        defaultTitle="The Fun Way to Create a Message - Moji Message"
+        description="Encode a message with emojis to spice up your delivery and make your message stick."
         openGraph={{
           siteName: 'Moji Message',
           type: 'website',
