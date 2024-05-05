@@ -9,3 +9,16 @@
 .remainingHeightAboveFold {
   min-height: calc(100vh - var(--header-height));
 }
+
+.wave {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave svg {
+  position: relative;
+  display: block;
+  width: calc(160% + 1.3px);
+  height: 100px;
+}
