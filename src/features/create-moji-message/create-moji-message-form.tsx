@@ -136,7 +136,7 @@ export function CreateMojiMessageForm({
       </div>
       <div className="mt-8">
         <button className="btn btn-primary w-full md:w-auto">
-          Convert Message
+          Create Message
         </button>
       </div>
     </form>
