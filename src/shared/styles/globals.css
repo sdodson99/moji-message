@@ -20,7 +20,7 @@ textarea {
 }
 
 .btn-primary {
-  @apply bg-primary text-white hover:bg-green-900;
+  @apply bg-primary text-white hover:bg-slate-800;
 }
 
 .btn-secondary {
